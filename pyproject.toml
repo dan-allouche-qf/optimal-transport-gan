@@ -1,0 +1,90 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "otgan"
+version = "1.0.0"
+description = "OT-GAN (Salimans et al. 2018) — correct, reproducible, device-portable, measurable."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Dan Allouche" },
+    { name = "Nicolas Dahan" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "torch>=1.13",
+    "torchvision>=0.14",
+    "numpy>=1.20",
+    "pyyaml>=5.4",
+    "matplotlib>=3.4",
+    "pillow>=8.0",
+    "tensorboard>=2.10",
+    "torchmetrics[image]>=1.0,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "pre-commit>=3.0",
+    "pot>=0.9",
+]
+
+[project.urls]
+Repository = "https://github.com/dan-allouche-qf/optimal-transport-gan"
+Issues = "https://github.com/dan-allouche-qf/optimal-transport-gan/issues"
+Report = "https://github.com/dan-allouche-qf/optimal-transport-gan/blob/main/report/OT_GAN_report.pdf"
+
+[project.scripts]
+otgan = "otgan.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["otgan*"]
+
+[tool.setuptools.package-data]
+otgan = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: end-to-end / training smoke tests (deselect with '-m \"not slow\"')",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.10"
+files = ["otgan"]
+check_untyped_defs = true
+no_implicit_optional = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = [
+    "torchvision.*",
+    "matplotlib.*",
+    "torchmetrics.*",
+    "yaml",
+    "ot",
+]
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["otgan"]

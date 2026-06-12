@@ -1,0 +1,51 @@
+================================================================================
+                                 Configuration                                  
+================================================================================
+             dataset: mnist                         
+            channels: 1                             
+          image_size: 32                            
+           data_root: data                          
+          batch_size: 128                           
+               z_dim: 100                           
+       learning_rate: 0.0002                        
+               beta1: 0.5                           
+               beta2: 0.999                         
+           g2c_ratio: 3                             
+            n_epochs: 10                            
+              latent: gaussian                      
+             epsilon: 1.0                           
+      sinkhorn_iters: 100                           
+                loss: energy_distance               
+               model: dcgan                         
+        cfm_coupling: sinkhorn                      
+             cfm_eps: 0.05                          
+           ode_steps: 100                           
+           ema_decay: 0.999                         
+         critic_sign: True                          
+           n_samples: 64                            
+            log_step: 1                             
+           fid_every: 5                             
+              n_eval: 10000                         
+     kid_subset_size: 1000                          
+      eval_cache_dir: eval_cache                    
+            eval_dir: baselines/dcgan/eval          
+            ckpt_dir: baselines/dcgan/ckpt          
+             log_dir: baselines/dcgan/logs          
+                seed: 11                            
+              device: auto                          
+         max_batches: None                          
+         num_workers: 2                             
+================================================================================
+epoch   0 | d_loss=0.4296 g_loss=4.3281 | 86.0s
+epoch   1 | d_loss=0.7218 g_loss=2.0703 | 87.8s
+epoch   2 | d_loss=0.6621 g_loss=2.0728 | 84.1s
+epoch   3 | d_loss=0.6217 g_loss=2.0984 | 82.5s
+[eval] using cached FID-LeNet weights /Users/danallouche/Documents/optimal-transport-gan/eval_cache/lenet_mnist.pt
+epoch   4 | d_loss=0.4944 g_loss=2.3403 | 82.0s | FID=163.93 KIDx1e3=185.12 IS=2.24
+epoch   5 | d_loss=0.4918 g_loss=2.4713 | 73.4s
+epoch   6 | d_loss=0.5426 g_loss=2.4254 | 80.3s
+epoch   7 | d_loss=0.4916 g_loss=2.4535 | 71.4s
+epoch   8 | d_loss=0.3394 g_loss=2.8416 | 70.8s
+/Users/danallouche/Documents/optimal-transport-gan/otgan/plotting.py:39: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  axes[0].legend(fontsize=8)
+epoch   9 | d_loss=0.3914 g_loss=2.8077 | 75.0s | FID=72.26 KIDx1e3=74.61 IS=2.19

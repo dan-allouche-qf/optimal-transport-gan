@@ -1,0 +1,39 @@
+# Canonical OT-GAN configuration for MNIST (mirrors the original notebook's args_dict,
+# with the corrections and quality levers added by the refactor).
+dataset: mnist
+channels: 1
+image_size: 32
+data_root: data
+
+# Optimization
+batch_size: 64
+z_dim: 100
+learning_rate: 0.0003
+beta1: 0.5
+beta2: 0.999
+g2c_ratio: 3          # 1 critic step every g2c_ratio steps; the rest are generator steps
+n_epochs: 50
+latent: gaussian      # 'gaussian' (recommended) or 'uniform'
+
+# Optimal transport (Sinkhorn)
+epsilon: 1.0
+sinkhorn_iters: 50    # all published runs use 50
+
+# Quality levers
+ema_decay: 0.999
+critic_sign: true     # true = correct OT-GAN; false reproduces the original (buggy) descent
+
+# Evaluation / logging
+n_samples: 64         # images in the fixed-noise sample grid
+log_step: 1           # epochs between sample-grid snapshots
+fid_every: 5          # epochs between FID/IS evaluations (0 disables)
+n_eval: 10000         # samples per side for FID/KID (MNIST test set caps real at 10k)
+eval_dir: OTGAN_eval
+ckpt_dir: weights
+log_dir: runs
+
+# Reproducibility / misc
+seed: 11
+device: auto          # auto -> cuda > mps > cpu
+max_batches: null     # cap batches/epoch for quick runs (null = full dataset)
+num_workers: 2

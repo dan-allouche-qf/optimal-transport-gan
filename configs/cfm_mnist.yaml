@@ -1,0 +1,44 @@
+# OT conditional flow matching on MNIST — the "2018 vs 2024" chapter.
+#
+# Same Sinkhorn solver (otgan/sinkhorn.py), six years apart: in 2018 it priced
+# minibatches inside an adversarial energy distance (OT-GAN, Salimans et al.);
+# in 2024 it pairs noise with data so that a single MSE regression learns a
+# straight flow (OT-CFM, Tong et al., TMLR 2024). No critic, no minimax —
+# the trainer shares the exact FID/KID/IS harness with the GAN configs.
+#
+# I-CFM control: `otgan train -c configs/cfm_mnist.yaml --override cfm_coupling=none`
+# trains with independent noise-data pairs (Lipman et al. 2023), isolating what
+# the minibatch OT coupling buys at identical capacity and budget.
+model: cfm
+dataset: mnist
+channels: 1
+image_size: 32
+data_root: data
+
+# Optimization
+batch_size: 128
+learning_rate: 0.0002
+beta1: 0.5
+beta2: 0.999
+n_epochs: 30
+
+# Flow matching
+cfm_coupling: sinkhorn # 'sinkhorn' | 'exact' (POT network simplex) | 'none' (I-CFM)
+cfm_eps: 0.05          # entropic eps on the mean-normalized cost (dimensionless)
+ode_steps: 100         # Euler steps when sampling from the flow
+sinkhorn_iters: 50     # Sinkhorn iterations for the minibatch coupling
+
+# Evaluation / logging
+n_samples: 64          # images in the fixed-noise sample grid
+log_step: 1            # epochs between sample-grid snapshots
+fid_every: 10          # epochs between FID/IS evaluations (0 disables)
+n_eval: 10000          # samples per side for FID/KID (MNIST test set caps real at 10k)
+eval_dir: baselines/otcfm/eval
+ckpt_dir: baselines/otcfm/weights
+log_dir: baselines/otcfm/runs
+
+# Reproducibility / misc
+seed: 11
+device: auto           # auto -> cuda > mps > cpu
+max_batches: null      # cap batches/epoch for quick runs (null = full dataset)
+num_workers: 2

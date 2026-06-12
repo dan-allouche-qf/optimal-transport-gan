@@ -1,0 +1,9 @@
+[eval] using cached FID-LeNet weights /Users/danallouche/Documents/optimal-transport-gan/eval_cache/lenet_mnist.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_inception.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_lenet.pt
+{
+  "fid_floor": {
+    "fid": 1.447390032920481,
+    "fid_lenet": 1.7557446833491213
+  }
+}

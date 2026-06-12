@@ -1,0 +1,93 @@
+================================================================================
+                                 Configuration                                  
+================================================================================
+             dataset: mnist                         
+            channels: 1                             
+          image_size: 32                            
+           data_root: data                          
+          batch_size: 64                            
+               z_dim: 100                           
+       learning_rate: 0.0003                        
+               beta1: 0.5                           
+               beta2: 0.999                         
+           g2c_ratio: 3                             
+            n_epochs: 8                             
+              latent: gaussian                      
+             epsilon: 1.0                           
+      sinkhorn_iters: 50                            
+                loss: energy_distance               
+               model: otgan                         
+        cfm_coupling: sinkhorn                      
+             cfm_eps: 0.05                          
+           ode_steps: 100                           
+           ema_decay: 0.999                         
+         critic_sign: True                          
+           n_samples: 64                            
+            log_step: 1                             
+           fid_every: 2                             
+              n_eval: 10000                         
+     kid_subset_size: 1000                          
+      eval_cache_dir: eval_cache                    
+            eval_dir: loss_compare/energy/eval      
+            ckpt_dir: loss_compare/energy/ckpt      
+             log_dir: loss_compare/energy/logs      
+                seed: 11                            
+              device: auto                          
+         max_batches: None                          
+         num_workers: 2                             
+================================================================================
+epoch   0 | D^2=+0.0596 | cross=1.1525 rr=0.2651 ff=0.2813 | 1628.6s
+[eval] using cached FID-LeNet weights /Users/danallouche/Documents/optimal-transport-gan/eval_cache/lenet_mnist.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_inception.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_lenet.pt
+epoch   1 | D^2=+0.0242 | cross=0.8874 rr=0.2090 ff=0.2226 | 1605.1s | FID=279.58 KIDx1e3=377.63 IS=1.99
+epoch   2 | D^2=+0.0035 | cross=0.4348 rr=0.1057 ff=0.1099 | 1487.1s
+epoch   3 | D^2=+0.0019 | cross=0.1624 rr=0.0375 ff=0.0427 | 1443.3s | FID=167.53 KIDx1e3=212.59 IS=1.98
+epoch   4 | D^2=+0.0001 | cross=0.0236 rr=0.0048 ff=0.0070 | 1443.5s
+epoch   5 | D^2=+0.0002 | cross=0.0290 rr=0.0058 ff=0.0086 | 1441.8s | FID=91.30 KIDx1e3=96.42 IS=2.04
+epoch   6 | D^2=+0.0038 | cross=0.0578 rr=0.0107 ff=0.0163 | 1435.7s
+/Users/danallouche/.pyenv/versions/3.13.1/lib/python3.13/multiprocessing/resource_tracker.py:276: UserWarning: resource_tracker: There appear to be 14 leaked semaphore objects to clean up at shutdown: {'/mp-71gluc9a', '/mp-qipi8mxb', '/mp-am0nw148', '/mp-slx3eas4', '/mp-8bj18y0j', '/mp-z99ybiep', '/mp-lj058mz3', '/mp-a69zxre2', '/mp-5ex4bal7', '/mp-7wh_dort', '/mp-27bu9iwl', '/mp-ecvuo5oa', '/mp-um2apulh', '/mp-shco5eyr'}
+  warnings.warn(
+Resumed from loss_compare/energy/ckpt/ot_gan.pt at epoch 7
+================================================================================
+                                 Configuration                                  
+================================================================================
+             dataset: mnist                         
+            channels: 1                             
+          image_size: 32                            
+           data_root: data                          
+          batch_size: 64                            
+               z_dim: 100                           
+       learning_rate: 0.0003                        
+               beta1: 0.5                           
+               beta2: 0.999                         
+           g2c_ratio: 3                             
+            n_epochs: 8                             
+              latent: gaussian                      
+             epsilon: 1.0                           
+      sinkhorn_iters: 50                            
+                loss: energy_distance               
+               model: otgan                         
+        cfm_coupling: sinkhorn                      
+             cfm_eps: 0.05                          
+           ode_steps: 100                           
+           ema_decay: 0.999                         
+         critic_sign: True                          
+           n_samples: 64                            
+            log_step: 1                             
+           fid_every: 2                             
+              n_eval: 10000                         
+     kid_subset_size: 1000                          
+      eval_cache_dir: eval_cache                    
+            eval_dir: loss_compare/energy/eval      
+            ckpt_dir: loss_compare/energy/ckpt      
+             log_dir: loss_compare/energy/logs      
+                seed: 11                            
+              device: auto                          
+         max_batches: None                          
+         num_workers: 2                             
+================================================================================
+[eval] using cached FID-LeNet weights /Users/danallouche/Documents/optimal-transport-gan/eval_cache/lenet_mnist.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_inception.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_lenet.pt
+epoch   7 | D^2=+0.0001 | cross=0.0222 rr=0.0022 ff=0.0088 | 1158.1s | FID=81.18 KIDx1e3=75.34 IS=2.33

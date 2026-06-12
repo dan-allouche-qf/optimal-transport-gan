@@ -1,0 +1,45 @@
+# Finance track: OT-GAN on GJR-GARCH(1,1) log-return paths — the same OT engine,
+# from images to markets. Runs in minutes on a laptop (CPU): paths are tiny, and
+# the 1D replay of the critic-sign ablation needs ~3000 steps, not ~12 hours.
+
+# Data: which return process to learn
+target: gjr_garch     # 'gjr_garch' | 'gbm' | 'heston' | 'csv' (csv requires csv_path)
+seq_len: 64
+n_train_paths: 8192
+n_eval_paths: 2048
+
+# GJR-GARCH(1,1) parameters (Glosten, Jagannathan & Runkle 1993)
+garch_omega: 5.0e-6
+garch_alpha: 0.05
+garch_beta: 0.90
+garch_gamma: 0.05
+
+# Optimization (step-based, unlike the epoch-based image trainer)
+batch_size: 64
+z_dim: 64
+learning_rate: 0.0003
+beta1: 0.5
+beta2: 0.999
+g2c_ratio: 3          # 1 critic step every g2c_ratio steps; the rest are generator steps
+n_steps: 3000
+
+# Optimal transport (epsilon is dimensionless: raw-path costs use C = C / C.mean())
+epsilon: 1.0
+sinkhorn_iters: 50
+loss: energy_distance # 'energy_distance' | 'sinkhorn_divergence'
+
+# Quality levers (same semantics as the image config)
+ema_decay: 0.999
+critic_sign: true     # true = correct OT-GAN; false replays the original (buggy) descent
+
+# Evaluation / logging
+eval_every: 500       # steps between Sinkhorn-divergence evaluations
+n_samples: 256        # fresh EMA samples per evaluation (vs held-out target paths)
+eval_dir: finance/eval
+ckpt_dir: finance/ckpt
+log_dir: finance/logs
+
+# Reproducibility / misc
+seed: 11
+device: cpu           # paths are tiny; CPU avoids MPS float64 quirks
+num_workers: 0

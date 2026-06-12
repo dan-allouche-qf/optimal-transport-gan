@@ -1,0 +1,11 @@
+[lenet] epoch 0: train acc 0.9036
+[lenet] epoch 1: train acc 0.9777
+[eval] trained FID-LeNet and cached weights at /Users/danallouche/Documents/optimal-transport-gan/eval_cache/lenet_mnist.pt
+{
+  "fid": 70.78082344103962,
+  "kid_mean": 0.06573306616510932,
+  "kid_std": 0.0019093348232873699,
+  "fid_lenet": 77.00230619227227,
+  "is_mean": 2.327086654211668,
+  "is_std": 0.0389461679639721
+}

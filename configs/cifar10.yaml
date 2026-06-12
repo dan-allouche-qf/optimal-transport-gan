@@ -1,0 +1,35 @@
+# Optional CIFAR-10 extension (3-channel). The same OTGANGenerator/OTGANCritic
+# architecture is reused; only `channels` changes. CIFAR-10 is genuinely harder
+# for this small network — a weak FID here is NOT an MNIST regression.
+dataset: cifar10
+channels: 3
+image_size: 32
+data_root: data
+
+batch_size: 64
+z_dim: 100
+learning_rate: 0.0003
+beta1: 0.5
+beta2: 0.999
+g2c_ratio: 3
+n_epochs: 100
+latent: gaussian
+
+epsilon: 1.0
+sinkhorn_iters: 100
+
+ema_decay: 0.999
+critic_sign: true
+
+n_samples: 64
+log_step: 1
+fid_every: 10
+n_eval: 10000
+eval_dir: OTGAN_eval_cifar
+ckpt_dir: weights_cifar
+log_dir: runs
+
+seed: 11
+device: auto
+max_batches: null
+num_workers: 2

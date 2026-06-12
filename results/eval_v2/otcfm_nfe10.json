@@ -1,0 +1,11 @@
+[eval] using cached FID-LeNet weights /Users/danallouche/Documents/optimal-transport-gan/eval_cache/lenet_mnist.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_inception.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_lenet.pt
+{
+  "fid": 13.508356669744813,
+  "kid_mean": 0.011257090250402238,
+  "kid_std": 0.0009682681225812744,
+  "fid_lenet": 34.64279417360808,
+  "is_mean": 1.8459580002846576,
+  "is_std": 0.016862012682199157
+}

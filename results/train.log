@@ -1,0 +1,112 @@
+
+=== Ablation run: critic_sign=True ===
+================================================================================
+                                 Configuration                                  
+================================================================================
+             dataset: mnist                         
+            channels: 1                             
+          image_size: 32                            
+           data_root: data                          
+          batch_size: 64                            
+               z_dim: 100                           
+       learning_rate: 0.0003                        
+               beta1: 0.5                           
+               beta2: 0.999                         
+           g2c_ratio: 3                             
+            n_epochs: 18                            
+              latent: gaussian                      
+             epsilon: 1.0                           
+      sinkhorn_iters: 50                            
+           ema_decay: 0.999                         
+         critic_sign: True                          
+           n_samples: 64                            
+            log_step: 1                             
+           fid_every: 3                             
+              n_eval: 2048                          
+            eval_dir: ablation/critic_sign/True/eval
+            ckpt_dir: ablation/critic_sign/True/ckpt
+             log_dir: ablation/critic_sign/True/logs
+                seed: 11                            
+              device: auto                          
+         max_batches: None                          
+         num_workers: 2                             
+================================================================================
+epoch   0 | D^2=+0.0596 | cross=1.1525 rr=0.2651 ff=0.2813 | 1591.6s
+epoch   1 | D^2=+0.0242 | cross=0.8874 rr=0.2090 ff=0.2226 | 1532.4s
+/Users/danallouche/Documents/optimal-transport-gan/.venv-audit/lib/python3.13/site-packages/torchmetrics/utilities/prints.py:43: UserWarning: Metric `InceptionScore` will save all extracted features in buffer. For large datasets this may lead to large memory footprint.
+  warnings.warn(*args, **kwargs)
+epoch   2 | D^2=+0.0019 | cross=0.2559 rr=0.0618 ff=0.0652 | 1311.5s | FID=211.59 IS=1.90
+epoch   3 | D^2=+0.0005 | cross=0.0900 rr=0.0222 ff=0.0226 | 1222.7s
+epoch   4 | D^2=+0.0001 | cross=0.0565 rr=0.0141 ff=0.0141 | 1204.1s
+epoch   5 | D^2=+0.0015 | cross=0.2401 rr=0.0585 ff=0.0608 | 1011.3s | FID=97.04 IS=1.95
+epoch   6 | D^2=+0.0046 | cross=0.4767 rr=0.1153 ff=0.1208 | 982.1s
+epoch   7 | D^2=+0.0027 | cross=0.2851 rr=0.0694 ff=0.0718 | 994.4s
+epoch   8 | D^2=+0.0028 | cross=0.1595 rr=0.0362 ff=0.0421 | 1023.2s | FID=69.88 IS=2.04
+epoch   9 | D^2=+0.0001 | cross=0.0273 rr=0.0055 ff=0.0081 | 983.3s
+epoch  10 | D^2=+0.0000 | cross=0.0280 rr=0.0058 ff=0.0082 | 981.8s
+epoch  11 | D^2=+0.0000 | cross=0.0270 rr=0.0057 ff=0.0078 | 992.6s | FID=83.03 IS=2.14
+epoch  12 | D^2=+0.0001 | cross=0.0263 rr=0.0057 ff=0.0074 | 990.2s
+epoch  13 | D^2=+0.0001 | cross=0.0261 rr=0.0056 ff=0.0074 | 969.4s
+epoch  14 | D^2=+0.0001 | cross=0.0315 rr=0.0069 ff=0.0088 | 969.1s | FID=86.07 IS=2.21
+epoch  15 | D^2=+0.0002 | cross=0.0402 rr=0.0092 ff=0.0108 | 984.6s
+epoch  16 | D^2=+0.0003 | cross=0.0574 rr=0.0136 ff=0.0150 | 1227.4s
+epoch  17 | D^2=+0.0018 | cross=0.0731 rr=0.0149 ff=0.0208 | 921.5s | FID=77.17 IS=2.32
+
+=== Ablation run: critic_sign=False ===
+================================================================================
+                                 Configuration                                  
+================================================================================
+             dataset: mnist                         
+            channels: 1                             
+          image_size: 32                            
+           data_root: data                          
+          batch_size: 64                            
+               z_dim: 100                           
+       learning_rate: 0.0003                        
+               beta1: 0.5                           
+               beta2: 0.999                         
+           g2c_ratio: 3                             
+            n_epochs: 18                            
+              latent: gaussian                      
+             epsilon: 1.0                           
+      sinkhorn_iters: 50                            
+           ema_decay: 0.999                         
+         critic_sign: False                         
+           n_samples: 64                            
+            log_step: 1                             
+           fid_every: 3                             
+              n_eval: 2048                          
+            eval_dir: ablation/critic_sign/False/eval
+            ckpt_dir: ablation/critic_sign/False/ckpt
+             log_dir: ablation/critic_sign/False/logs
+                seed: 11                            
+              device: auto                          
+         max_batches: None                          
+         num_workers: 2                             
+================================================================================
+epoch   0 | D^2=+0.0073 | cross=0.0437 rr=0.0050 ff=0.0132 | 965.9s
+epoch   1 | D^2=+0.0000 | cross=0.0151 rr=0.0028 ff=0.0047 | 1097.1s
+epoch   2 | D^2=+0.0000 | cross=0.0127 rr=0.0026 ff=0.0037 | 1095.3s | FID=264.12 IS=1.94
+epoch   3 | D^2=+0.0000 | cross=0.0101 rr=0.0021 ff=0.0029 | 1069.2s
+epoch   4 | D^2=+0.0000 | cross=0.0089 rr=0.0018 ff=0.0026 | 1081.2s
+epoch   5 | D^2=+0.0000 | cross=0.0079 rr=0.0017 ff=0.0023 | 1056.9s | FID=189.54 IS=2.01
+epoch   6 | D^2=+0.0000 | cross=0.0079 rr=0.0016 ff=0.0024 | 1025.9s
+epoch   7 | D^2=+0.0000 | cross=0.0080 rr=0.0014 ff=0.0025 | 1011.5s
+epoch   8 | D^2=+0.0000 | cross=0.0073 rr=0.0013 ff=0.0023 | 1027.8s | FID=169.90 IS=2.21
+epoch   9 | D^2=+0.0000 | cross=0.0073 rr=0.0013 ff=0.0024 | 992.6s
+epoch  10 | D^2=+0.0000 | cross=0.0057 rr=0.0010 ff=0.0018 | 989.6s
+epoch  11 | D^2=+0.0000 | cross=0.0055 rr=0.0010 ff=0.0018 | 994.4s | FID=172.40 IS=2.32
+epoch  12 | D^2=+0.0000 | cross=0.0065 rr=0.0009 ff=0.0023 | 989.4s
+epoch  13 | D^2=+0.0000 | cross=0.0054 rr=0.0009 ff=0.0018 | 983.8s
+epoch  14 | D^2=+0.0000 | cross=0.0053 rr=0.0009 ff=0.0018 | 984.9s | FID=185.56 IS=2.42
+epoch  15 | D^2=+0.0000 | cross=0.0048 rr=0.0008 ff=0.0016 | 1017.8s
+epoch  16 | D^2=+0.0000 | cross=0.0055 rr=0.0007 ff=0.0020 | 950.4s
+epoch  17 | D^2=+0.0000 | cross=0.0076 rr=0.0009 ff=0.0029 | 761.2s | FID=185.31 IS=2.32
+
+# Ablation: critic_sign
+
+| run | final FID | final IS | final D^2 |
+|-----|-----------|----------|-----------|
+| critic_sign=True | 77.17 | 2.32 | +0.0018 |
+| critic_sign=False | 185.31 | 2.32 | +0.0000 |
+

@@ -1,0 +1,73 @@
+================================================================================
+                                 Configuration                                  
+================================================================================
+             dataset: mnist                         
+            channels: 1                             
+          image_size: 32                            
+           data_root: data                          
+          batch_size: 128                           
+               z_dim: 100                           
+       learning_rate: 0.0002                        
+               beta1: 0.5                           
+               beta2: 0.999                         
+           g2c_ratio: 3                             
+            n_epochs: 30                            
+              latent: gaussian                      
+             epsilon: 1.0                           
+      sinkhorn_iters: 50                            
+                loss: energy_distance               
+               model: cfm                           
+        cfm_coupling: sinkhorn                      
+             cfm_eps: 0.05                          
+           ode_steps: 100                           
+           ema_decay: 0.999                         
+         critic_sign: True                          
+           n_samples: 64                            
+            log_step: 1                             
+           fid_every: 10                            
+              n_eval: 10000                         
+     kid_subset_size: 1000                          
+      eval_cache_dir: eval_cache                    
+            eval_dir: baselines/otcfm/eval          
+            ckpt_dir: baselines/otcfm/weights       
+             log_dir: baselines/otcfm/runs          
+                seed: 11                            
+              device: auto                          
+         max_batches: None                          
+         num_workers: 2                             
+================================================================================
+epoch   0 | cfm_loss=0.3314 | 156.4s
+epoch   1 | cfm_loss=0.1932 | 151.4s
+epoch   2 | cfm_loss=0.1750 | 152.4s
+epoch   3 | cfm_loss=0.1663 | 152.1s
+epoch   4 | cfm_loss=0.1603 | 155.9s
+epoch   5 | cfm_loss=0.1566 | 154.3s
+epoch   6 | cfm_loss=0.1531 | 144.7s
+epoch   7 | cfm_loss=0.1502 | 136.5s
+epoch   8 | cfm_loss=0.1485 | 138.2s
+[eval] using cached FID-LeNet weights /Users/danallouche/Documents/optimal-transport-gan/eval_cache/lenet_mnist.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_inception.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_lenet.pt
+epoch   9 | cfm_loss=0.1462 | 132.9s | FID=67.07 KIDx1e3=78.91 IS=1.93
+epoch  10 | cfm_loss=0.1443 | 133.2s
+epoch  11 | cfm_loss=0.1426 | 131.4s
+epoch  12 | cfm_loss=0.1422 | 123.1s
+epoch  13 | cfm_loss=0.1406 | 122.7s
+epoch  14 | cfm_loss=0.1399 | 124.8s
+epoch  15 | cfm_loss=0.1388 | 129.4s
+epoch  16 | cfm_loss=0.1378 | 130.5s
+epoch  17 | cfm_loss=0.1373 | 129.4s
+epoch  18 | cfm_loss=0.1370 | 129.7s
+epoch  19 | cfm_loss=0.1364 | 130.5s | FID=15.48 KIDx1e3=13.59 IS=1.89
+epoch  20 | cfm_loss=0.1362 | 136.2s
+epoch  21 | cfm_loss=0.1354 | 134.4s
+epoch  22 | cfm_loss=0.1357 | 134.9s
+epoch  23 | cfm_loss=0.1337 | 136.0s
+epoch  24 | cfm_loss=0.1340 | 135.6s
+epoch  25 | cfm_loss=0.1335 | 135.8s
+epoch  26 | cfm_loss=0.1332 | 131.2s
+epoch  27 | cfm_loss=0.1331 | 131.0s
+epoch  28 | cfm_loss=0.1328 | 131.1s
+/Users/danallouche/Documents/optimal-transport-gan/otgan/plotting.py:39: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  axes[0].legend(fontsize=8)
+epoch  29 | cfm_loss=0.1323 | 132.7s | FID=11.38 KIDx1e3=9.64 IS=1.90

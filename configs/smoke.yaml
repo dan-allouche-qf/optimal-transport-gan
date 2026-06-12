@@ -1,0 +1,33 @@
+# Tiny configuration for CI / fast end-to-end verification. Runs in seconds on CPU.
+dataset: mnist
+channels: 1
+image_size: 32
+data_root: data
+
+batch_size: 8
+z_dim: 100
+learning_rate: 0.0003
+beta1: 0.5
+beta2: 0.999
+g2c_ratio: 3
+n_epochs: 1
+latent: gaussian
+
+epsilon: 1.0
+sinkhorn_iters: 5
+
+ema_decay: 0.9
+critic_sign: true
+
+n_samples: 8
+log_step: 1
+fid_every: 1
+n_eval: 64
+eval_dir: OTGAN_eval_smoke
+ckpt_dir: weights_smoke
+log_dir: runs_smoke
+
+seed: 11
+device: auto
+max_batches: 5        # only 5 mini-batches per epoch
+num_workers: 0

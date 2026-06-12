@@ -1,0 +1,31 @@
+# Tiny finance configuration for CI / fast end-to-end verification.
+# Runs in seconds on CPU.
+target: gjr_garch
+seq_len: 64
+n_train_paths: 256
+n_eval_paths: 64
+
+batch_size: 16
+z_dim: 32
+learning_rate: 0.0003
+beta1: 0.5
+beta2: 0.999
+g2c_ratio: 3
+n_steps: 20
+
+epsilon: 1.0
+sinkhorn_iters: 5
+loss: energy_distance
+
+ema_decay: 0.9
+critic_sign: true
+
+eval_every: 10
+n_samples: 32
+eval_dir: finance/eval_smoke
+ckpt_dir: finance/ckpt_smoke
+log_dir: finance/logs_smoke
+
+seed: 0
+device: cpu
+num_workers: 0

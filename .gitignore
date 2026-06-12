@@ -1,0 +1,54 @@
+# Data, weights, evaluation artifacts (auto-downloaded / generated)
+data/
+weights/
+weights_*/
+OTGAN_eval/
+OTGAN_eval_*/
+runs/
+runs_*/
+ablation/
+# results/ holds run logs and orchestration scratch — but the primary evidence
+# behind every published number (re-evaluation JSONs, training logs) is tracked.
+results/*
+!results/eval_v2/
+results/eval_v2/*
+!results/eval_v2/*.json
+!results/run_*.log
+!results/train.log
+baselines/
+loss_compare/
+eval_cache/
+samples.png
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv*/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+
+# LaTeX build artifacts
+report/*.aux
+report/*.log
+report/*.fls
+report/*.fdb_latexmk
+report/*.out
+report/*.synctex.gz
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp

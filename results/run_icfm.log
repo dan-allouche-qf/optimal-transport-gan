@@ -1,0 +1,115 @@
+================================================================================
+                                 Configuration                                  
+================================================================================
+             dataset: mnist                         
+            channels: 1                             
+          image_size: 32                            
+           data_root: data                          
+          batch_size: 128                           
+               z_dim: 100                           
+       learning_rate: 0.0002                        
+               beta1: 0.5                           
+               beta2: 0.999                         
+           g2c_ratio: 3                             
+            n_epochs: 30                            
+              latent: gaussian                      
+             epsilon: 1.0                           
+      sinkhorn_iters: 50                            
+                loss: energy_distance               
+               model: cfm                           
+        cfm_coupling: none                          
+             cfm_eps: 0.05                          
+           ode_steps: 100                           
+           ema_decay: 0.999                         
+         critic_sign: True                          
+           n_samples: 64                            
+            log_step: 1                             
+           fid_every: 10                            
+              n_eval: 10000                         
+     kid_subset_size: 1000                          
+      eval_cache_dir: eval_cache                    
+            eval_dir: baselines/icfm/eval           
+            ckpt_dir: baselines/icfm/weights        
+             log_dir: baselines/icfm/runs           
+                seed: 11                            
+              device: auto                          
+         max_batches: None                          
+         num_workers: 2                             
+================================================================================
+epoch   0 | cfm_loss=0.3391 | 144.7s
+epoch   1 | cfm_loss=0.1979 | 143.5s
+epoch   2 | cfm_loss=0.1801 | 142.0s
+epoch   3 | cfm_loss=0.1714 | 141.9s
+epoch   4 | cfm_loss=0.1656 | 140.9s
+epoch   5 | cfm_loss=0.1607 | 142.2s
+epoch   6 | cfm_loss=0.1581 | 142.3s
+epoch   7 | cfm_loss=0.1557 | 144.7s
+epoch   8 | cfm_loss=0.1531 | 145.2s
+[eval] using cached FID-LeNet weights /Users/danallouche/Documents/optimal-transport-gan/eval_cache/lenet_mnist.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_inception.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_lenet.pt
+epoch   9 | cfm_loss=0.1500 | 146.0s | FID=63.61 KIDx1e3=72.63 IS=1.96
+epoch  10 | cfm_loss=0.1486 | 144.3s
+epoch  11 | cfm_loss=0.1475 | 143.3s
+epoch  12 | cfm_loss=0.1465 | 142.3s
+epoch  13 | cfm_loss=0.1455 | 141.3s
+epoch  14 | cfm_loss=0.1445 | 141.5s
+epoch  15 | cfm_loss=0.1446 | 141.3s
+epoch  16 | cfm_loss=0.1436 | 142.5s
+epoch  17 | cfm_loss=0.1428 | 142.6s
+epoch  18 | cfm_loss=0.1414 | 143.7s
+epoch  19 | cfm_loss=0.1412 | 145.2s | FID=14.86 KIDx1e3=12.59 IS=1.89
+epoch  20 | cfm_loss=0.1408 | 150.2s
+epoch  21 | cfm_loss=0.1396 | 148.2s
+epoch  22 | cfm_loss=0.1399 | 150.4s
+epoch  23 | cfm_loss=0.1390 | 150.6s
+epoch  24 | cfm_loss=0.1387 | 147.6s
+epoch  25 | cfm_loss=0.1383 | 121.6s
+epoch  26 | cfm_loss=0.1382 | 120.1s
+epoch  27 | cfm_loss=0.1373 | 120.1s
+epoch  28 | cfm_loss=0.1370 | 120.8s
+Resumed from baselines/icfm/weights/ot_cfm.pt at epoch 29
+================================================================================
+                                 Configuration                                  
+================================================================================
+             dataset: mnist                         
+            channels: 1                             
+          image_size: 32                            
+           data_root: data                          
+          batch_size: 128                           
+               z_dim: 100                           
+       learning_rate: 0.0002                        
+               beta1: 0.5                           
+               beta2: 0.999                         
+           g2c_ratio: 3                             
+            n_epochs: 30                            
+              latent: gaussian                      
+             epsilon: 1.0                           
+      sinkhorn_iters: 50                            
+                loss: energy_distance               
+               model: cfm                           
+        cfm_coupling: none                          
+             cfm_eps: 0.05                          
+           ode_steps: 100                           
+           ema_decay: 0.999                         
+         critic_sign: True                          
+           n_samples: 64                            
+            log_step: 1                             
+           fid_every: 10                            
+              n_eval: 10000                         
+     kid_subset_size: 1000                          
+      eval_cache_dir: eval_cache                    
+            eval_dir: baselines/icfm/eval           
+            ckpt_dir: baselines/icfm/weights        
+             log_dir: baselines/icfm/runs           
+                seed: 11                            
+              device: auto                          
+         max_batches: None                          
+         num_workers: 2                             
+================================================================================
+/Users/danallouche/Documents/optimal-transport-gan/otgan/plotting.py:39: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  axes[0].legend(fontsize=8)
+[eval] using cached FID-LeNet weights /Users/danallouche/Documents/optimal-transport-gan/eval_cache/lenet_mnist.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_inception.pt
+[eval] using cached real features /Users/danallouche/Documents/optimal-transport-gan/eval_cache/mnist_test_n10000_lenet.pt
+epoch  29 | cfm_loss=0.1367 | 87.3s | FID=10.88 KIDx1e3=8.88 IS=1.91
